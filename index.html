@@ -66,6 +66,7 @@
   <button onclick="checkSentence()">確認句子</button>
   <button onclick="speakSentence()">🔊 播放句子</button>
   <button onclick="nextQuestion()">下一題</button>
+  <button onclick="restartGame()">🔁 重來一次</button>
   <div id="result"></div>
   <div id="score"></div>
 
@@ -165,6 +166,12 @@
         hintBox.textContent = '';
         return;
       }
+      loadQuestion(currentIndex);
+    }
+
+    function restartGame() {
+      currentIndex = 0;
+      score = 0;
       loadQuestion(currentIndex);
     }
 
