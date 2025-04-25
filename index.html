@@ -1,4 +1,4 @@
-l <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -60,14 +60,13 @@ l <!DOCTYPE html>
 </head>
 <body>
   <h1>Sentence Builder 英文句子拼拼樂</h1>
-  <h1>高師大組發班第五組</h1>
   <div id="sentence-box" class="sentence-box"></div>
   <div id="word-bank" class="sentence-box"></div>
   <div id="hint"></div>
   <button onclick="checkSentence()">確認句子</button>
   <button onclick="speakSentence()">🔊 播放句子</button>
   <button onclick="nextQuestion()">下一題</button>
-  <button onclick="restartGame()">🔁 重來一次</button>
+  <button onclick="retryCurrent()">🔁 重來這一題</button>
   <div id="result"></div>
   <div id="score"></div>
 
@@ -170,9 +169,7 @@ l <!DOCTYPE html>
       loadQuestion(currentIndex);
     }
 
-    function restartGame() {
-      currentIndex = 0;
-      score = 0;
+    function retryCurrent() {
       loadQuestion(currentIndex);
     }
 
