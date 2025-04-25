@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sentence Builder Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f8ff;
+      padding: 30px;
+      text-align: center;
+    }
+    h1 {
+      color: #333;
+    }
+    .sentence-box {
+      margin: 20px 0;
+      padding: 20px;
+      background-color: #fff;
+      border: 2px dashed #ccc;
+      min-height: 60px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .word {
+      background-color: #e6f7ff;
+      padding: 10px 15px;
+      margin: 5px;
+      border-radius: 8px;
+      cursor: grab;
+      user-select: none;
+      font-size: 18px;
+    }
+    .word.dragging {
+      opacity: 0.5;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    #hint {
+      margin-top: 10px;
+      font-size: 16px;
+      color: #555;
+    }
+    #score {
+      margin-top: 15px;
+      font-size: 16px;
+      color: #006400;
+    }
+  </style>
+</head>
+<body>
+  <h1>Sentence Builder 英文句子拼拼樂</h1>
+  <div id="sentence-box" class="sentence-box"></div>
+  <div id="word-bank" class="sentence-box"></div>
+  <div id="hint"></div>
+  <button onclick="checkSentence()">確認句子</button>
+  <button onclick="speakSentence()">🔊 播放句子</button>
+  <button onclick="nextQuestion()">下一題</button>
+  <div id="result"></div>
+  <div id="score"></div>
+
+  <script>
+    const sentenceBank = [
+      { sentence: ['The', 'boy', 'is', 'playing', 'soccer', 'in', 'the', 'park.'], hint: '那個男孩正在公園踢足球' },
+      { sentence: ['She', 'gets', 'up', 'at', 'seven', 'every', 'morning.'], hint: '她每天早上七點起床' },
+      { sentence: ['My', 'dad', 'is', 'cooking', 'dinner', 'in', 'the', 'kitchen.'], hint: '我爸爸正在廚房煮晚餐' },
+      { sentence: ['We', 'are', 'going', 'to', 'the', 'zoo', 'this', 'Sunday.'], hint: '我們這個星期天要去動物園' },
+      { sentence: ['They', 'have', 'a', 'dog', 'named', 'Lucky.'], hint: '他們有一隻叫 Lucky 的狗' },
+      { sentence: ['I', 'am', 'doing', 'my', 'homework', 'right', 'now.'], hint: '我現在正在做功課' },
+      { sentence: ['The', 'students', 'are', 'reading', 'books', 'in', 'the', 'library.'], hint: '學生們正在圖書館看書' },
+      { sentence: ['She', 'is', 'drawing', 'a', 'beautiful', 'picture.'], hint: '她正在畫一幅美麗的畫' },
+      { sentence: ['Tom', 'rides', 'his', 'bike', 'to', 'school', 'every', 'day.'], hint: '湯姆每天騎腳踏車上學' },
+      { sentence: ['It', 'is', 'raining', 'heavily', 'outside', 'now.'], hint: '現在外面下著大雨' },
+      { sentence: ['The', 'cat', 'is', 'sleeping', 'on', 'the', 'sofa.'], hint: '貓咪正在沙發上睡覺' },
+      { sentence: ['We', 'have', 'English', 'class', 'on', 'Monday.'], hint: '我們星期一有英文課' },
+      { sentence: ['Dad', 'watches', 'TV', 'after', 'dinner.'], hint: '爸爸晚餐後會看電視' },
+      { sentence: ['Amy', 'is', 'talking', 'on', 'the', 'phone.'], hint: '艾咪正在講電話' },
+      { sentence: ['The', 'bus', 'stops', 'in', 'front', 'of', 'the', 'school.'], hint: '公車停在學校前面' },
+      { sentence: ['They', 'are', 'playing', 'basketball', 'together.'], hint: '他們正在一起打籃球' },
+      { sentence: ['He', 'goes', 'to', 'bed', 'at', 'nine', 'every', 'night.'], hint: '他每天晚上九點上床睡覺' },
+      { sentence: ['The', 'children', 'are', 'singing', 'a', 'happy', 'song.'], hint: '孩子們正在唱一首快樂的歌' },
+      { sentence: ['Mom', 'is', 'washing', 'the', 'dishes', 'now.'], hint: '媽媽現在正在洗碗' },
+      { sentence: ['We', 'are', 'eating', 'lunch', 'in', 'the', 'cafeteria.'], hint: '我們正在餐廳吃午餐' }
+    ];
+
+    let currentIndex = 0;
+    let score = 0;
+    const wordBank = document.getElementById('word-bank');
+    const sentenceBox = document.getElementById('sentence-box');
+    const result = document.getElementById('result');
+    const hintBox = document.getElementById('hint');
+    const scoreBox = document.getElementById('score');
+
+    function createWordElement(word) {
+      const span = document.createElement('span');
+      span.className = 'word';
+      span.textContent = word;
+      span.draggable = true;
+
+      span.addEventListener('dragstart', e => {
+        span.classList.add('dragging');
+        e.dataTransfer.setData('text/plain', word);
+        e.dataTransfer.effectAllowed = 'move';
+      });
+
+      span.addEventListener('dragend', () => {
+        span.classList.remove('dragging');
+      });
+
+      return span;
+    }
+
+    function handleDrop(e) {
+      e.preventDefault();
+      const dragging = document.querySelector('.word.dragging');
+      if (dragging) sentenceBox.appendChild(dragging);
+    }
+
+    sentenceBox.addEventListener('dragover', e => e.preventDefault());
+    sentenceBox.addEventListener('drop', handleDrop);
+
+    function loadQuestion(index) {
+      sentenceBox.innerHTML = '';
+      wordBank.innerHTML = '';
+      result.textContent = '';
+      const current = sentenceBank[index];
+      const shuffledWords = [...current.sentence].sort(() => Math.random() - 0.5);
+      hintBox.textContent = '提示：' + current.hint;
+      scoreBox.textContent = '目前得分：' + score;
+      shuffledWords.forEach(word => {
+        wordBank.appendChild(createWordElement(word));
+      });
+    }
+
+    function checkSentence() {
+      const userSentence = Array.from(sentenceBox.children).map(el => el.textContent);
+      const correctSentence = sentenceBank[currentIndex].sentence;
+      if (userSentence.join(' ') === correctSentence.join(' ')) {
+        result.textContent = '🎉 答對了！';
+        result.style.color = 'green';
+        score++;
+        scoreBox.textContent = '目前得分：' + score;
+      } else {
+        result.textContent = '❌ 答錯了，請再試一次。';
+        result.style.color = 'red';
+      }
+    }
+
+    function nextQuestion() {
+      currentIndex++;
+      if (currentIndex >= sentenceBank.length) {
+        result.textContent = '👏 遊戲結束！總得分：' + score + ' / ' + sentenceBank.length;
+        sentenceBox.innerHTML = '';
+        wordBank.innerHTML = '';
+        hintBox.textContent = '';
+        return;
+      }
+      loadQuestion(currentIndex);
+    }
+
+    function speakSentence() {
+      const sentence = sentenceBank[currentIndex].sentence.join(' ');
+      const utterance = new SpeechSynthesisUtterance(sentence);
+      speechSynthesis.speak(utterance);
+    }
+
+    window.onload = () => {
+      loadQuestion(currentIndex);
+    };
+  </script>
+</body>
+</html>
