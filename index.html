@@ -56,15 +56,21 @@
       font-size: 16px;
       color: #006400;
     }
+    #image {
+      margin-top: 15px;
+      max-width: 300px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
   </style>
 </head>
 <body>
   <h1>Sentence Builder 英文句子拼拼樂</h1>
-  <h1>高師大113組發班第五組</h1>
-  
   <div id="sentence-box" class="sentence-box"></div>
   <div id="word-bank" class="sentence-box"></div>
   <div id="hint"></div>
+  <img id="image" src="" alt="題目圖片">
+  <br>
   <button onclick="checkSentence()">確認句子</button>
   <button onclick="speakSentence()">🔊 播放句子</button>
   <button onclick="nextQuestion()">下一題</button>
@@ -74,26 +80,26 @@
 
   <script>
     const sentenceBank = [
-      { sentence: ['The', 'boy', 'is', 'playing', 'soccer', 'in', 'the', 'park.'], hint: '那個男孩正在公園踢足球' },
-      { sentence: ['She', 'gets', 'up', 'at', 'seven', 'every', 'morning.'], hint: '她每天早上七點起床' },
-      { sentence: ['My', 'dad', 'is', 'cooking', 'dinner', 'in', 'the', 'kitchen.'], hint: '我爸爸正在廚房煮晚餐' },
-      { sentence: ['We', 'are', 'going', 'to', 'the', 'zoo', 'this', 'Sunday.'], hint: '我們這個星期天要去動物園' },
-      { sentence: ['They', 'have', 'a', 'dog', 'named', 'Lucky.'], hint: '他們有一隻叫 Lucky 的狗' },
-      { sentence: ['I', 'am', 'doing', 'my', 'homework', 'right', 'now.'], hint: '我現在正在做功課' },
-      { sentence: ['The', 'students', 'are', 'reading', 'books', 'in', 'the', 'library.'], hint: '學生們正在圖書館看書' },
-      { sentence: ['She', 'is', 'drawing', 'a', 'beautiful', 'picture.'], hint: '她正在畫一幅美麗的畫' },
-      { sentence: ['Tom', 'rides', 'his', 'bike', 'to', 'school', 'every', 'day.'], hint: '湯姆每天騎腳踏車上學' },
-      { sentence: ['It', 'is', 'raining', 'heavily', 'outside', 'now.'], hint: '現在外面下著大雨' },
-      { sentence: ['The', 'cat', 'is', 'sleeping', 'on', 'the', 'sofa.'], hint: '貓咪正在沙發上睡覺' },
-      { sentence: ['We', 'have', 'English', 'class', 'on', 'Monday.'], hint: '我們星期一有英文課' },
-      { sentence: ['Dad', 'watches', 'TV', 'after', 'dinner.'], hint: '爸爸晚餐後會看電視' },
-      { sentence: ['Amy', 'is', 'talking', 'on', 'the', 'phone.'], hint: '艾咪正在講電話' },
-      { sentence: ['The', 'bus', 'stops', 'in', 'front', 'of', 'the', 'school.'], hint: '公車停在學校前面' },
-      { sentence: ['They', 'are', 'playing', 'basketball', 'together.'], hint: '他們正在一起打籃球' },
-      { sentence: ['He', 'goes', 'to', 'bed', 'at', 'nine', 'every', 'night.'], hint: '他每天晚上九點上床睡覺' },
-      { sentence: ['The', 'children', 'are', 'singing', 'a', 'happy', 'song.'], hint: '孩子們正在唱一首快樂的歌' },
-      { sentence: ['Mom', 'is', 'washing', 'the', 'dishes', 'now.'], hint: '媽媽現在正在洗碗' },
-      { sentence: ['We', 'are', 'eating', 'lunch', 'in', 'the', 'cafeteria.'], hint: '我們正在餐廳吃午餐' }
+      { sentence: ['The', 'boy', 'is', 'playing', 'soccer', 'in', 'the', 'park.'], hint: '那個男孩正在公園踢足球', img: 'images/boy-soccer.jpg' },
+      { sentence: ['She', 'gets', 'up', 'at', 'seven', 'every', 'morning.'], hint: '她每天早上七點起床', img: 'images/girl-wake-up.jpg' },
+      { sentence: ['My', 'dad', 'is', 'cooking', 'dinner', 'in', 'the', 'kitchen.'], hint: '我爸爸正在廚房煮晚餐', img: 'images/dad-cooking.jpg' },
+      { sentence: ['We', 'are', 'going', 'to', 'the', 'zoo', 'this', 'Sunday.'], hint: '我們這個星期天要去動物園', img: 'images/zoo-trip.jpg' },
+      { sentence: ['They', 'have', 'a', 'dog', 'named', 'Lucky.'], hint: '他們有一隻叫 Lucky 的狗', img: 'images/dog-lucky.jpg' },
+      { sentence: ['I', 'am', 'doing', 'my', 'homework', 'right', 'now.'], hint: '我現在正在做功課', img: 'images/homework.jpg' },
+      { sentence: ['The', 'students', 'are', 'reading', 'books', 'in', 'the', 'library.'], hint: '學生們正在圖書館看書', img: 'images/students-library.jpg' },
+      { sentence: ['She', 'is', 'drawing', 'a', 'beautiful', 'picture.'], hint: '她正在畫一幅美麗的畫', img: 'images/girl-drawing.jpg' },
+      { sentence: ['Tom', 'rides', 'his', 'bike', 'to', 'school', 'every', 'day.'], hint: '湯姆每天騎腳踏車上學', img: 'images/boy-biking.jpg' },
+      { sentence: ['It', 'is', 'raining', 'heavily', 'outside', 'now.'], hint: '現在外面下著大雨', img: 'images/raining.jpg' },
+      { sentence: ['The', 'cat', 'is', 'sleeping', 'on', 'the', 'sofa.'], hint: '貓咪正在沙發上睡覺', img: 'images/cat-sofa.jpg' },
+      { sentence: ['We', 'have', 'English', 'class', 'on', 'Monday.'], hint: '我們星期一有英文課', img: 'images/english-class.jpg' },
+      { sentence: ['Dad', 'watches', 'TV', 'after', 'dinner.'], hint: '爸爸晚餐後會看電視', img: 'images/dad-tv.jpg' },
+      { sentence: ['Amy', 'is', 'talking', 'on', 'the', 'phone.'], hint: '艾咪正在講電話', img: 'images/girl-phone.jpg' },
+      { sentence: ['The', 'bus', 'stops', 'in', 'front', 'of', 'the', 'school.'], hint: '公車停在學校前面', img: 'images/school-bus.jpg' },
+      { sentence: ['They', 'are', 'playing', 'basketball', 'together.'], hint: '他們正在一起打籃球', img: 'images/basketball.jpg' },
+      { sentence: ['He', 'goes', 'to', 'bed', 'at', 'nine', 'every', 'night.'], hint: '他每天晚上九點上床睡覺', img: 'images/boy-sleep.jpg' },
+      { sentence: ['The', 'children', 'are', 'singing', 'a', 'happy', 'song.'], hint: '孩子們正在唱一首快樂的歌', img: 'images/children-singing.jpg' },
+      { sentence: ['Mom', 'is', 'washing', 'the', 'dishes', 'now.'], hint: '媽媽現在正在洗碗', img: 'images/mom-dishes.jpg' },
+      { sentence: ['We', 'are', 'eating', 'lunch', 'in', 'the', 'cafeteria.'], hint: '我們正在餐廳吃午餐', img: 'images/lunch-cafeteria.jpg' }
     ];
 
     let currentIndex = 0;
@@ -103,6 +109,7 @@
     const result = document.getElementById('result');
     const hintBox = document.getElementById('hint');
     const scoreBox = document.getElementById('score');
+    const imageBox = document.getElementById('image');
 
     function createWordElement(word) {
       const span = document.createElement('span');
@@ -139,6 +146,8 @@
       const current = sentenceBank[index];
       const shuffledWords = [...current.sentence].sort(() => Math.random() - 0.5);
       hintBox.textContent = '提示：' + current.hint;
+      imageBox.src = current.img;
+      imageBox.alt = current.hint;
       scoreBox.textContent = '目前得分：' + score;
       shuffledWords.forEach(word => {
         wordBank.appendChild(createWordElement(word));
@@ -166,6 +175,7 @@
         sentenceBox.innerHTML = '';
         wordBank.innerHTML = '';
         hintBox.textContent = '';
+        imageBox.src = '';
         return;
       }
       loadQuestion(currentIndex);
@@ -187,5 +197,3 @@
   </script>
 </body>
 </html>
-
-   
