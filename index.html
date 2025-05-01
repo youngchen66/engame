@@ -66,7 +66,6 @@
 </head>
 <body>
   <h1>Sentence Builder 英文句子拼拼樂</h1>
-  <h1>高師大113組發班第五組</h1>
   <div id="sentence-box" class="sentence-box"></div>
   <div id="word-bank" class="sentence-box"></div>
   <div id="hint"></div>
@@ -81,27 +80,7 @@
 
   <script>
     const sentenceBank = [
-      { sentence: ['The', 'boy', 'is', 'playing', 'soccer', 'in', 'the', 'park.'], hint: '那個男孩正在公園踢足球', img:'images/boy-soccer.png' },
-      { sentence: ['She', 'gets', 'up', 'at', 'seven', 'every', 'morning.'], hint: '她每天早上七點起床', img: 'images/girl-wake-up.png' },
-      { sentence: ['My', 'dad', 'is', 'cooking', 'dinner', 'in', 'the', 'kitchen.'], hint: '我爸爸正在廚房煮晚餐', img: 'images/dad-cooking.png' },
-      { sentence: ['We', 'are', 'going', 'to', 'the', 'zoo', 'this', 'Sunday.'], hint: '我們這個星期天要去動物園', img: 'images/zoo-trip.png' },
-      { sentence: ['They', 'have', 'a', 'dog', 'named', 'Lucky.'], hint: '他們有一隻叫 Lucky 的狗', img: 'images/dog-lucky.png' },
-      { sentence: ['I', 'am', 'doing', 'my', 'homework', 'right', 'now.'], hint: '我現在正在做功課', img: 'images/homework.png' },
-      { sentence: ['The', 'students', 'are', 'reading', 'books', 'in', 'the', 'library.'], hint: '學生們正在圖書館看書', img: 'images/students-library.png' },
-      { sentence: ['She', 'is', 'drawing', 'a', 'beautiful', 'picture.'], hint: '她正在畫一幅美麗的畫', img: 'images/girl-drawing.png' },
-      { sentence: ['Tom', 'rides', 'his', 'bike', 'to', 'school', 'every', 'day.'], hint: '湯姆每天騎腳踏車上學', img: 'images/boy-biking.png' },
-      { sentence: ['It', 'is', 'raining', 'heavily', 'outside', 'now.'], hint: '現在外面下著大雨', img: 'images/raining.png' },
-      { sentence: ['The', 'cat', 'is', 'sleeping', 'on', 'the', 'sofa.'], hint: '貓咪正在沙發上睡覺', img: 'images/cat-sofa.png' },
-      { sentence: ['We', 'have', 'English', 'class', 'on', 'Monday.'], hint: '我們星期一有英文課', img: 'images/english-class.png' },
-      { sentence: ['Dad', 'watches', 'TV', 'after', 'dinner.'], hint: '爸爸晚餐後會看電視', img: 'images/dad-tv.png' },
-      { sentence: ['Amy', 'is', 'talking', 'on', 'the', 'phone.'], hint: '艾咪正在講電話', img: 'images/girl-phone.png' },
-      { sentence: ['The', 'bus', 'stops', 'in', 'front', 'of', 'the', 'school.'], hint: '公車停在學校前面', img: 'images/school-bus.png' },
-      { sentence: ['They', 'are', 'playing', 'basketball', 'together.'], hint: '他們正在一起打籃球', img: 'images/basketball.png' },
-      { sentence: ['He', 'goes', 'to', 'bed', 'at', 'nine', 'every', 'night.'], hint: '他每天晚上九點上床睡覺', img: 'images/boy-sleep.png' },
-      { sentence: ['The', 'children', 'are', 'singing', 'a', 'happy', 'song.'], hint: '孩子們正在唱一首快樂的歌', img: 'images/children-singing.png' },
-      { sentence: ['Mom', 'is', 'washing', 'the', 'dishes', 'now.'], hint: '媽媽現在正在洗碗', img: 'images/mom-dishes.png' },
-      { sentence: ['We', 'are', 'eating', 'lunch', 'in', 'the', 'cafeteria.'], hint: '我們正在餐廳吃午餐', img: 'images/lunch-cafeteria.png' }
-      { sentence: ['What', 'time', 'do', 'you', 'get', 'up'], hint: '你幾點起床？', img: 'images/q1.jpg' },
+  { sentence: ['What', 'time', 'do', 'you', 'get', 'up'], hint: '你幾點起床？', img: 'images/q1.jpg' },
   { sentence: ['What', 'time', 'does', 'he', 'go', 'to', 'bed'], hint: '他幾點上床睡覺？', img: 'images/q2.jpg' },
   { sentence: ['I', 'get', 'up', 'at', 'six'], hint: '我六點起床。', img: 'images/q3.jpg' },
   { sentence: ['She', 'goes', 'to', 'bed', 'at', 'ten'], hint: '她十點上床睡覺。', img: 'images/q4.jpg' },
@@ -147,21 +126,7 @@
   { sentence: ['Do', 'you', 'like', 'English'], hint: '你喜歡英文嗎？', img: 'images/q44.jpg' },
   { sentence: ['Yes', 'I', 'do'], hint: '是的，我是。', img: 'images/q45.jpg' },
   { sentence: ['No', 'I', 'do', 'not'], hint: '不，我不是。', img: 'images/q46.jpg' }
-  { sentence: ['I', 'am', 'happy', 'today'], hint: '我今天很開心。', img: 'images/q47.jpg' },
-  { sentence: ['She', 'likes', 'to', 'read', 'books'], hint: '她喜歡閱讀書籍。', img: 'images/q48.jpg' },
-  { sentence: ['They', 'play', 'basketball', 'after', 'school'], hint: '他們放學後打籃球。', img: 'images/q49.jpg' },
-  { sentence: ['Do', 'you', 'have', 'any', 'pets'], hint: '你有寵物嗎？', img: 'images/q50.jpg' },
-  { sentence: ['Yes', 'I', 'have', 'a', 'cat'], hint: '是的，我有一隻貓。', img: 'images/q51.jpg' },
-  { sentence: ['No', 'I', 'do', 'not', 'have', 'any'], hint: '不，我沒有任何寵物。', img: 'images/q52.jpg' },
-  { sentence: ['We', 'are', 'going', 'to', 'the', 'park'], hint: '我們要去公園。', img: 'images/q53.jpg' },
-  { sentence: ['He', 'is', 'drawing', 'a', 'picture'], hint: '他正在畫圖。', img: 'images/q54.jpg' },
-  { sentence: ['Can', 'you', 'ride', 'a', 'bike'], hint: '你會騎腳踏車嗎？', img: 'images/q55.jpg' },
-  { sentence: ['Yes', 'I', 'can'], hint: '是的，我會。', img: 'images/q56.jpg' },
-  { sentence: ['No', 'I', 'can', 'not'], hint: '不，我不會。', img: 'images/q57.jpg' },
-  { sentence: ['She', 'is', 'eating', 'an', 'apple'], hint: '她正在吃蘋果。', img: 'images/q58.jpg' },
-  { sentence: ['What', 'is', 'your', 'favorite', 'color'], hint: '你最喜歡的顏色是什麼？', img: 'images/q59.jpg' },
-  { sentence: ['My', 'favorite', 'color', 'is', 'blue'], hint: '我最喜歡的顏色是藍色。', img: 'images/q60.jpg' }
-    ];
+];
 
     let currentIndex = 0;
     let score = 0;
@@ -172,7 +137,8 @@
     const scoreBox = document.getElementById('score');
     const imageBox = document.getElementById('image');
 
-    function createWordElement(word) {
+    // 建立單字元素並設定可拖曳屬性與事件處理器
+function createWordElement(word) {
       const span = document.createElement('span');
       span.className = 'word';
       span.textContent = word;
@@ -191,16 +157,19 @@
       return span;
     }
 
-    function handleDrop(e) {
+    // 拖曳放置時將拖曳元素加入句子區塊
+function handleDrop(e) {
       e.preventDefault();
       const dragging = document.querySelector('.word.dragging');
       if (dragging) sentenceBox.appendChild(dragging);
     }
 
-    sentenceBox.addEventListener('dragover', e => e.preventDefault());
+    // 允許句子框可以拖曳放置單字
+sentenceBox.addEventListener('dragover', e => e.preventDefault());
     sentenceBox.addEventListener('drop', handleDrop);
 
-    function loadQuestion(index) {
+    // 載入題目資料，重設句子與單字區塊，顯示提示與圖片
+function loadQuestion(index) {
       sentenceBox.innerHTML = '';
       wordBank.innerHTML = '';
       result.textContent = '';
@@ -215,7 +184,8 @@
       });
     }
 
-    function checkSentence() {
+    // 檢查使用者拼出的句子是否與正確句子一致
+function checkSentence() {
       const userSentence = Array.from(sentenceBox.children).map(el => el.textContent);
       const correctSentence = sentenceBank[currentIndex].sentence;
       if (userSentence.join(' ') === correctSentence.join(' ')) {
@@ -229,7 +199,8 @@
       }
     }
 
-    function nextQuestion() {
+    // 載入下一題，若超過題數則顯示遊戲結束
+function nextQuestion() {
       currentIndex++;
       if (currentIndex >= sentenceBank.length) {
         result.textContent = '👏 遊戲結束！總得分：' + score + ' / ' + sentenceBank.length;
@@ -242,19 +213,24 @@
       loadQuestion(currentIndex);
     }
 
-    function retryCurrent() {
+    // 重新載入目前題目
+function retryCurrent() {
       loadQuestion(currentIndex);
     }
 
-    function speakSentence() {
+    // 使用語音合成播放當前正確句子
+function speakSentence() {
       const sentence = sentenceBank[currentIndex].sentence.join(' ');
       const utterance = new SpeechSynthesisUtterance(sentence);
       speechSynthesis.speak(utterance);
     }
 
-    window.onload = () => {
+    // 畫面載入完成時初始化第一題
+window.onload = () => {
       loadQuestion(currentIndex);
     };
   </script>
 </body>
 </html>
+
+
