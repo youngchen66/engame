@@ -80,53 +80,27 @@
 
   <script>
     const sentenceBank = [
-  { sentence: ['What', 'time', 'do', 'you', 'get', 'up'], hint: '你幾點起床？', img: 'images/q1.jpg' },
-  { sentence: ['What', 'time', 'does', 'he', 'go', 'to', 'bed'], hint: '他幾點上床睡覺？', img: 'images/q2.jpg' },
-  { sentence: ['I', 'get', 'up', 'at', 'six'], hint: '我六點起床。', img: 'images/q3.jpg' },
-  { sentence: ['She', 'goes', 'to', 'bed', 'at', 'ten'], hint: '她十點上床睡覺。', img: 'images/q4.jpg' },
-  { sentence: ['Do', 'you', 'go', 'to', 'school', 'at', 'seven'], hint: '你七點去上學嗎？', img: 'images/q5.jpg' },
-  { sentence: ['Does', 'he', 'have', 'lunch', 'at', 'twelve'], hint: '他十二點吃午餐嗎？', img: 'images/q6.jpg' },
-  { sentence: ['Yes', 'I', 'do'], hint: '是的，我是。', img: 'images/q7.jpg' },
-  { sentence: ['No', 'he', 'does', 'not'], hint: '不，他不是。', img: 'images/q8.jpg' },
-  { sentence: ['I', 'go', 'to', 'school', 'at', 'seven'], hint: '我七點去上學。', img: 'images/q9.jpg' },
-  { sentence: ['He', 'has', 'lunch', 'at', 'twelve'], hint: '他十二點吃午餐。', img: 'images/q10.jpg' },
-  { sentence: ['Do', 'you', 'eat', 'dinner', 'at', 'six'], hint: '你六點吃晚餐嗎？', img: 'images/q11.jpg' },
-  { sentence: ['Does', 'she', 'do', 'her', 'homework', 'at', 'five'], hint: '她五點做功課嗎？', img: 'images/q12.jpg' },
-  { sentence: ['Yes', 'we', 'do'], hint: '是的，我們是。', img: 'images/q13.jpg' },
-  { sentence: ['No', 'she', 'does', 'not'], hint: '不，她不是。', img: 'images/q14.jpg' },
-  { sentence: ['We', 'eat', 'dinner', 'at', 'six'], hint: '我們六點吃晚餐。', img: 'images/q15.jpg' },
-  { sentence: ['She', 'does', 'her', 'homework', 'at', 'five'], hint: '她五點做功課。', img: 'images/q16.jpg' },
-  { sentence: ['Do', 'you', 'take', 'a', 'bath', 'at', 'nine'], hint: '你九點洗澡嗎？', img: 'images/q17.jpg' },
-  { sentence: ['Does', 'he', 'watch', 'TV', 'at', 'eight'], hint: '他八點看電視嗎？', img: 'images/q18.jpg' },
-  { sentence: ['Yes', 'they', 'do'], hint: '是的，他們是。', img: 'images/q19.jpg' },
-  { sentence: ['No', 'he', 'does', 'not'], hint: '不，他不是。', img: 'images/q20.jpg' },
-  { sentence: ['I', 'take', 'a', 'bath', 'at', 'nine'], hint: '我九點洗澡。', img: 'images/q21.jpg' },
-  { sentence: ['He', 'watches', 'TV', 'at', 'eight'], hint: '他八點看電視。', img: 'images/q22.jpg' },
-  { sentence: ['Do', 'you', 'go', 'to', 'bed', 'at', 'ten'], hint: '你十點上床睡覺嗎？', img: 'images/q23.jpg' },
-  { sentence: ['Does', 'she', 'get', 'up', 'at', 'seven'], hint: '她七點起床嗎？', img: 'images/q24.jpg' },
-  { sentence: ['Yes', 'I', 'do'], hint: '是的，我是。', img: 'images/q25.jpg' },
-  { sentence: ['No', 'she', 'does', 'not'], hint: '不，她不是。', img: 'images/q26.jpg' },
-  { sentence: ['I', 'go', 'to', 'bed', 'at', 'ten'], hint: '我十點上床睡覺。', img: 'images/q27.jpg' },
-  { sentence: ['She', 'gets', 'up', 'at', 'seven'], hint: '她七點起床。', img: 'images/q28.jpg' },
-  { sentence: ['What', 'do', 'you', 'do', 'in', 'the', 'morning'], hint: '你早上做什麼？', img: 'images/q29.jpg' },
-  { sentence: ['I', 'brush', 'my', 'teeth', 'and', 'eat', 'breakfast'], hint: '我刷牙和吃早餐。', img: 'images/q30.jpg' },
-  { sentence: ['Does', 'he', 'go', 'to', 'school', 'by', 'bus'], hint: '他搭公車上學嗎？', img: 'images/q31.jpg' },
-  { sentence: ['Yes', 'he', 'does'], hint: '是的，他是。', img: 'images/q32.jpg' },
-  { sentence: ['No', 'he', 'does', 'not'], hint: '不，他不是。', img: 'images/q33.jpg' },
-  { sentence: ['How', 'do', 'you', 'go', 'to', 'school'], hint: '你怎麼去上學？', img: 'images/q34.jpg' },
-  { sentence: ['I', 'ride', 'a', 'bike', 'to', 'school'], hint: '我騎腳踏車去上學。', img: 'images/q35.jpg' },
-  { sentence: ['Does', 'she', 'read', 'books', 'in', 'the', 'library'], hint: '她在圖書館看書嗎？', img: 'images/q36.jpg' },
-  { sentence: ['Yes', 'she', 'does'], hint: '是的，她是。', img: 'images/q37.jpg' },
-  { sentence: ['No', 'she', 'does', 'not'], hint: '不，她不是。', img: 'images/q38.jpg' },
-  { sentence: ['Do', 'they', 'play', 'soccer', 'after', 'school'], hint: '他們放學後踢足球嗎？', img: 'images/q39.jpg' },
-  { sentence: ['Yes', 'they', 'do'], hint: '是的，他們是。', img: 'images/q40.jpg' },
-  { sentence: ['No', 'they', 'do', 'not'], hint: '不，他們不是。', img: 'images/q41.jpg' },
-  { sentence: ['What', 'do', 'you', 'do', 'in', 'the', 'evening'], hint: '你晚上做什麼？', img: 'images/q42.jpg' },
-  { sentence: ['I', 'do', 'my', 'homework', 'and', 'watch', 'TV'], hint: '我做功課和看電視。', img: 'images/q43.jpg' },
-  { sentence: ['Do', 'you', 'like', 'English'], hint: '你喜歡英文嗎？', img: 'images/q44.jpg' },
-  { sentence: ['Yes', 'I', 'do'], hint: '是的，我是。', img: 'images/q45.jpg' },
-  { sentence: ['No', 'I', 'do', 'not'], hint: '不，我不是。', img: 'images/q46.jpg' }
-];
+      { sentence: ['The', 'boy', 'is', 'playing', 'soccer', 'in', 'the', 'park.'], hint: '那個男孩正在公園踢足球', img: 'images/boy-soccer.jpg' },
+      { sentence: ['She', 'gets', 'up', 'at', 'seven', 'every', 'morning.'], hint: '她每天早上七點起床', img: 'images/girl-wake-up.jpg' },
+      { sentence: ['My', 'dad', 'is', 'cooking', 'dinner', 'in', 'the', 'kitchen.'], hint: '我爸爸正在廚房煮晚餐', img: 'images/dad-cooking.jpg' },
+      { sentence: ['We', 'are', 'going', 'to', 'the', 'zoo', 'this', 'Sunday.'], hint: '我們這個星期天要去動物園', img: 'images/zoo-trip.jpg' },
+      { sentence: ['They', 'have', 'a', 'dog', 'named', 'Lucky.'], hint: '他們有一隻叫 Lucky 的狗', img: 'images/dog-lucky.jpg' },
+      { sentence: ['I', 'am', 'doing', 'my', 'homework', 'right', 'now.'], hint: '我現在正在做功課', img: 'images/homework.jpg' },
+      { sentence: ['The', 'students', 'are', 'reading', 'books', 'in', 'the', 'library.'], hint: '學生們正在圖書館看書', img: 'images/students-library.jpg' },
+      { sentence: ['She', 'is', 'drawing', 'a', 'beautiful', 'picture.'], hint: '她正在畫一幅美麗的畫', img: 'images/girl-drawing.jpg' },
+      { sentence: ['Tom', 'rides', 'his', 'bike', 'to', 'school', 'every', 'day.'], hint: '湯姆每天騎腳踏車上學', img: 'images/boy-biking.jpg' },
+      { sentence: ['It', 'is', 'raining', 'heavily', 'outside', 'now.'], hint: '現在外面下著大雨', img: 'images/raining.jpg' },
+      { sentence: ['The', 'cat', 'is', 'sleeping', 'on', 'the', 'sofa.'], hint: '貓咪正在沙發上睡覺', img: 'images/cat-sofa.jpg' },
+      { sentence: ['We', 'have', 'English', 'class', 'on', 'Monday.'], hint: '我們星期一有英文課', img: 'images/english-class.jpg' },
+      { sentence: ['Dad', 'watches', 'TV', 'after', 'dinner.'], hint: '爸爸晚餐後會看電視', img: 'images/dad-tv.jpg' },
+      { sentence: ['Amy', 'is', 'talking', 'on', 'the', 'phone.'], hint: '艾咪正在講電話', img: 'images/girl-phone.jpg' },
+      { sentence: ['The', 'bus', 'stops', 'in', 'front', 'of', 'the', 'school.'], hint: '公車停在學校前面', img: 'images/school-bus.jpg' },
+      { sentence: ['They', 'are', 'playing', 'basketball', 'together.'], hint: '他們正在一起打籃球', img: 'images/basketball.jpg' },
+      { sentence: ['He', 'goes', 'to', 'bed', 'at', 'nine', 'every', 'night.'], hint: '他每天晚上九點上床睡覺', img: 'images/boy-sleep.jpg' },
+      { sentence: ['The', 'children', 'are', 'singing', 'a', 'happy', 'song.'], hint: '孩子們正在唱一首快樂的歌', img: 'images/children-singing.jpg' },
+      { sentence: ['Mom', 'is', 'washing', 'the', 'dishes', 'now.'], hint: '媽媽現在正在洗碗', img: 'images/mom-dishes.jpg' },
+      { sentence: ['We', 'are', 'eating', 'lunch', 'in', 'the', 'cafeteria.'], hint: '我們正在餐廳吃午餐', img: 'images/lunch-cafeteria.jpg' }
+    ];
 
     let currentIndex = 0;
     let score = 0;
@@ -232,5 +206,3 @@ window.onload = () => {
   </script>
 </body>
 </html>
-
-
